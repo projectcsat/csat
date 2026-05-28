@@ -558,3 +558,43 @@ document.addEventListener('touchstart', function(e) {
         makeNoButtonFlee();
     }
 });
+
+
+function fleeNoButton(e) {
+    // Перевіряємо, чи це мобільний пристрій (ширина екрана менше 500px)
+    if (window.innerWidth > 500) return;
+
+    // Перевіряємо, чи ми зараз саме на стартовому екрані
+    const startScreen = document.getElementById('start-screen');
+    if (!startScreen || startScreen.classList.contains('hidden')) return;
+
+    const noBtn = e.target;
+    const card = noBtn.closest('.card');
+    if (!card) return;
+
+    // Скасовуємо стандартний клік, щоб сторінка не перезавантажувалася і не йшла далі
+    e.preventDefault();
+
+    // Робимо позиціонування кнопки абсолютним, щоб вона могла вільно рухатися всередині картки
+    noBtn.style.position = 'absolute';
+
+    // Рахуємо безпечні межі всередині картки з урахуванням розмірів кнопки та паддінгів
+    const padding = 15;
+    const maxX = card.clientWidth - noBtn.clientWidth - padding;
+    const maxY = card.clientHeight - noBtn.clientHeight - padding;
+
+    // Генеруємо випадкові координати всередині картки
+    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+    // Миттєво перекидаємо кнопку в нову точку
+    noBtn.style.left = `${randomX}px`;
+    noBtn.style.top = `${randomY}px`;
+}
+
+// Вішаємо слухач події на торкання екрана (touchstart працює на телефонах миттєво, швидше ніж click)
+document.addEventListener('touchstart', function(e) {
+    if (e.target && e.target.classList.contains('btn-no')) {
+        fleeNoButton(e);
+    }
+}, { passive: false });
