@@ -38,7 +38,7 @@ window.onload = function() {
     // --- ДАНІ КАРТОК ПОРАД (12 ШТУК) ---
     const cardsData = [
         { 
-            text: `Перше, з чого ми почнемо - структуруємо типи наших клієнтів, з якими буває дещо складно. Як факт, мозок не любить невідомість й відсутність чіткості. Й коли ми бачимо агресивну й звинувачувальну поведінку клієнтів, ми часом забуваємо деталі їх психології, що заводить чат "не туди" й призводить до наших негативних емоцій`, 
+            text: `Перше, з чого ми почнемо - структуруємо типи наших клієнтів, з якими буває дещо складно. Мозок не любить невідомість, тому коли ми бачимо агресивну й звинувачувальну поведінку клієнтів, ми часом забуваємо деталі їх психології, що заводить чат "не туди"`, 
             img: "" 
         },
         { 
@@ -525,3 +525,36 @@ createChaoticFlowers();
 // Якщо вікно браузера змінюється — перераховуємо їх, щоб не вилазили за межі
 window.addEventListener('resize', createChaoticFlowers);
 
+function makeNoButtonFlee() {
+    const noBtn = document.querySelector('.btn-no');
+    const card = document.querySelector('.card');
+    
+    if (!noBtn || !card) return;
+
+    // Перевіряємо, чи це мобільний пристрій (ширина екрана менше 500px)
+    if (window.innerWidth <= 500) {
+        // Обов'язково ставимо абсолютне позиціонування, щоб кнопка могла вільно рухатися
+        noBtn.style.position = 'absolute';
+
+        // Рахуємо доступні межі всередині картки з урахуванням розмірів кнопки
+        const padding = 20; // щоб кнопка не вилітала на самі краї
+        const maxX = card.clientWidth - noBtn.clientWidth - padding;
+        const maxY = card.clientHeight - noBtn.clientHeight - padding;
+
+        // Генеруємо випадкові координати
+        const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+        const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+        // Рухаємо кнопку
+        noBtn.style.left = `${randomX}px`;
+        noBtn.style.top = `${randomY}px`;
+    }
+}
+
+// Слухач події для мобільних телефонів (спрацьовує в момент торкання пальцем)
+document.addEventListener('touchstart', function(e) {
+    if (e.target && e.target.classList.contains('btn-no')) {
+        e.preventDefault(); // Скасовує звичайне натискання
+        makeNoButtonFlee();
+    }
+});

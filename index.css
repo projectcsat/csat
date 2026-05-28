@@ -638,9 +638,6 @@ h1 .sub-textt {
 }
 
 
-/* ==========================================================================
-   10. АНІМАЦІЇ ТА СЛУЖБОВІ КЛАСИ
-   ========================================================================== */
 .fade-in {
     animation: fadeInEffect 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -652,7 +649,7 @@ h1 .sub-textt {
 
 @keyframes floatCard {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-6px); } /* Трохи менша амплітуда для екранів */
     100% { transform: translateY(0px); }
 }
 
@@ -670,65 +667,121 @@ h1 .sub-textt {
     display: none !important; 
 }
 
-/* Медіа-запити адаптивності */
+/* ==========================================================================
+   МЕДІА-ЗАПИТИ ДЛЯ СУПЕР-АДАПТИВНОСТІ (ПЛАНШЕТИ ТА ТЕЛЕФОНИ)
+   ========================================================================== */
+
+/* 1. ПЛАНШЕТИ ТА МАЛЕНЬКІ НОУТБУКИ */
 @media (max-width: 1024px) {
     .grid-five-columns {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Перебудовуємо 5 колонок в 1 ряд */
         gap: 15px;
     }
     .card.card-wide {
-        padding: 3rem 1.5rem !important;
+        max-width: 650px !important; /* На планшеті широка картка повертається до зручного вигляду */
+        padding: 2.5rem 2rem !important;
     }
 }
 
-/*квіти*/
-#flowers-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0; 
-    pointer-events: none; 
-    overflow: hidden;
-}
-
-/* Оновлений стиль для квіточки */
-.flower-emoji {
-    position: absolute;
-    font-size: 16px;
-   /*  line-select: none; */
-    user-select: none;
-    opacity: 0.7;
-    animation: spinFlower 6s linear infinite, floatFlower 8s ease-in-out infinite alternate;
-}
-
-/* 1. Анімація крутіння */
-@keyframes spinFlower {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* 2. Анімація плавного хаотичного зсуву (літають туди-сюди) */
-@keyframes floatFlower {
-    0% {
-        margin-top: 0px;
-        margin-left: 0px;
+/* 2. ТЕЛЕФОНИ (СМАРТФОНИ) */
+@media (max-width: 500px) {
+    body {
+        padding: 8px; /* Мінімальні відступи від країв екрана */
+        overflow-y: auto; 
     }
-    50% {
-        margin-top: 20px;
-        margin-left: -15px;
-    }
-    100% {
-        margin-top: -15px;
-        margin-left: 25px;
-    }
-}
 
+    /* Зменшуємо паддінги картки, щоб звільнити максимум місця */
+    .card, .card.card-compact, .card:has(.card-wide) {
+        padding: 1.5rem 1rem !important; /* Компактні внутрішні відступи */
+        border-radius: 24px; 
+        max-height: 96vh; 
+        overflow-y: auto; 
+    }
+
+    /* Спеціальне зменшення тексту саме для Поради 1 (галереї / 5 колонок) */
+    .card:has(.card-wide) .card-step-title {
+        font-size: 1.1rem !important; /* Робимо заголовок компактним */
+        margin-bottom: 0.5rem !important;
+    }
+
+    .card:has(.card-wide) .card-step-intro {
+        font-size: 0.85rem !important; /* Зменшуємо підзаголовок */
+        margin-bottom: 0.6rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .card:has(.card-wide) .card-step-body {
+        font-size: 0.8rem !important; /* Зменшуємо основний опис Поради 1 */
+        line-height: 1.4 !important;
+    }
+
+    /* Загальне зменшення шрифтів для ВСІХ інших екранів на телефоні */
+    h1 {
+        margin-bottom: 1.2rem;
+        gap: 10px;
+    }
+    h1 .main-question { font-size: 1.3rem; }
+    h1 .sub-text { font-size: 0.95rem; }
+    h1 .highlight-text { font-size: 1.1rem; }
+    
+    .card-step-title { font-size: 1.2rem; }
+    .card-step-intro { font-size: 0.9rem; }
+    .card-step-body { font-size: 0.88rem !important; }
+    #quiz-screen h2 { font-size: 0.95rem; margin-bottom: 1rem; }
+
+    /* Кнопки стають компактнішими за висотою */
+    .btn-container, .navigation-container, .quiz-navigation {
+        flex-direction: column; 
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 20px; /* Менша висота кнопок */
+        font-size: 0.95rem;
+    }
+
+    /* Варіанти відповідей у тесті */
+    .quiz-options-container { gap: 8px; }
+    .quiz-option-btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+    }
+
+    /* Блок підказки (фідбек) у тесті */
+    .quiz-feedback-box {
+        margin-top: 0.8rem;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+    /* Картинки стають ще меншими, щоб не красти простір */
+    .image-wrapper {
+        max-width: 160px;
+        height: 110px;
+        margin-bottom: 0.8rem;
+    }
+
+    /* Текст у чат-бульбашках */
+    .chat-container { gap: 8px; margin-top: 0.8rem; }
+    .chat-bubble {
+        max-width: 95%;
+        padding: 10px 12px;
+        font-size: 0.82rem !important;
+    }
+    
+    .end-card-content {
+        padding: 1.5rem 1rem;
+    }
+    .end-card-title { font-size: 1.4rem; }
+    .end-card-subtitle { font-size: 0.95rem; margin-bottom: 1.5rem; }
+}
 /* ==========================================================================
-   11. ЕКРАН ПІСЛЯ ЗАВАЛУ ТЕСТУ (ЗЛІСНА КАРТИНКА)
+   11. ЕКРАН ПІСЛЯ ЗАВАЛУ ТЕСТУ (ОПТИМІЗАЦІЯ ДЛЯ СМАРТФОНІВ)
    ========================================================================== */
-
 #den-screen {
     position: fixed;
     top: 0;
@@ -739,8 +792,7 @@ h1 .sub-textt {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Має бути поверх всього */
-    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease;
@@ -756,33 +808,33 @@ h1 .sub-textt {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 90%; /* Не виходить за межі екрана */
+    width: 100%;
+    max-width: 90%;
     max-height: 90%;
 }
 
-/* Злісна картинка: кругла, з анімацією */
 .den-img {
-    width: 60px; /* Починаємо з зовсім крихітної */
+    width: 60px;
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 15px 35px rgba(15, 45, 89, 0.15); /* Ніжніша тінь під колір сайту */
+    box-shadow: 0 15px 35px rgba(15, 45, 89, 0.15);
     border: 6px solid #ff4d6d;
     opacity: 0;
-    
-    /* ТУТ ВИПРАВЛЕНО: Анімація тепер триває 3.5 секунди (дуже повільно) і рухається рівномірно */
     animation: denExpandSlow 7s ease-in-out forwards;
 }
 
-/* Навігація з кнопкою: плавно з'являється вже після того, як фото виросло */
 .den-navigation {
-    margin-top: 35px;
+    margin-top: 25px;
     opacity: 0;
     animation: fadeInEffect 0.8s ease forwards;
-    animation-delay: 3.7s; /* З'явиться суворо після фіналу анімації фото */
+    animation-delay: 3.7s;
+    width: 100%;
+    max-width: 280px; /* Обмежуємо ширину кнопки повернення */
 }
 
 .den-navigation .btn-yes {
+    width: 100%;
     background: #6b767f;
     padding: 14px 35px;
     font-size: 1.1rem;
@@ -798,19 +850,26 @@ h1 .sub-textt {
     background: #e63950;
 }
 
-/* --- НОВА ПОВІЛЬНА АНІМАЦІЯ РОЗШИРЕННЯ --- */
+/* Оновлена адаптивна анімація: на ноутах картинка буде великою, на телефонах не вилізе за екран */
 @keyframes denExpandSlow {
     0% {
         opacity: 0;
-        transform: scale(0.2); /* Початок: маленька-маленька */
+        transform: scale(0.2);
     }
     15% {
-        opacity: 1; /* М'яко стає видимою */
+        opacity: 1;
     }
     100% {
         opacity: 1;
-        width: 82vh; /* Фінал: гігантський розмір на майже весь екран */
-        height: 82vh;
+        /* Використовуємо vmin — воно вибирає мінімальне значення між висотою та шириною. 
+           Це залізобетонно захищає картинку від виходу за рамки будь-якого екрана */
+        width: 75vmin; 
+        height: 75vmin;
         transform: scale(1);
     }
+}
+
+.btn {
+    /* твої інші стилі */
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
