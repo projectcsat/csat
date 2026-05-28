@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Турбота про себе та Тестування</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="flowers-background">
+</div>
+    <div class="card">
+        
+        <div id="start-screen">
+            <h1>
+                <span class="sub-text sub-textt">Робота в підтримці вимагає величезної кількості внутрішньої енергії. Щоб щиро проявляти емпатію й мати високий CSAT, важливо насамперед піклуватися про свій власний стан🌸</span>
+                <span class="sub-text">Щодня ви підтримуєте сотні клієнтів.</span>
+                <span class="main-question">Але хто підтримає вас?✨</span>
+                <span class="highlight-text">Готові відновити внутрішній ресурс?</span>
+            </h1>
+            <div class="btn-container">
+                <button id="noBtn" class="btn btn-no">Ні</button>
+                <button id="yesBtn" class="btn btn-yes">Так</button>
+            </div>
+        </div>
+
+        <div id="intro-screen" class="hidden">
+            <h1>
+                <span class="main-question">Перед тим як ми почнемо... 🧘</span>
+                
+                <span class="intro-paragraph intro-accent">
+                    Картинки, гіфки, емпатія - це чудові поради, проте, будемо чесними, ви чули їх вже разів зі сто. 
+                    <strong>Але де ж взяти ту емпатію, коли емоційний стан на нулі?</strong>
+                </span>
+        
+             
+        
+                <span class="intro-paragraph intro-footer">
+                    Ми підготували для вас 12 простих порад, які допоможуть вам стабільно бути в праймі🤍
+                </span>
+            </h1>
+            <div class="navigation-container">
+                <button id="introPrevBtn" class="btn btn-no" style="flex: 1;">Назад</button>
+                <button id="introNextBtn" class="btn btn-yes" style="flex: 1;">Далі</button>
+            </div>
+        </div>
+
+        <div id="gallery-screen" class="hidden">
+            <div id="progress-tag">Картка 1 із 12</div>
+        
+            <div id="main-content-card" class="fade-in">
+                <div class="top-paragraph">
+                    <h2 id="card-title" class="card-step-title"></h2> 
+                    <p id="card-intro" class="card-step-intro"></p>
+                    <p id="card-text" class="card-step-body"></p>
+                </div>
+                
+                <div id="card-img-container" class="image-wrapper">
+                    <img id="card-img" src="" alt="Зображення">
+                </div>
+        
+                <div id="columns-container" class="grid-five-columns hidden">
+                    <div class="grid-column">
+                        <h3>Експерт 🧐</h3>
+                        <p class="column-description">Впевнений, що знає правила краще за вас. Сипле термінами, посилається на закони, пункти оферти або досвід користування іншими сервісами.</p>
+                        <p class="column-meta"><span class="meta-label">Поведінка в чаті:</span> Пише чітко, зверхньо. Звинувачує агента в обмеженості знань, вимагає з'єднати з керівництвом.</p>
+                        <div class="column-action-box">
+                            <span class="action-label">Як працювати:</span> Ніколи не сперечатися і не мірятися знаннями. Спілкуватися на рівних, використовувати професійну термінологію.
+                        </div>
+                    </div>
+                    <div class="grid-column">
+                        <h3>Імпульсивний 😡</h3>
+                        <p class="column-description">Клієнт, у якого проблема сталася "тут і зараз", і він перебуває на піку емоцій. Йому потрібно не просто вирішити питання, а скинути напругу.</p>
+                        <p class="column-meta"><span class="meta-label">Поведінка в чаті:</span> Багато повідомлень, капслок, звинувачення ("Жахливий сервіс", "Ви шахраї").</p>
+                        <div class="column-action-box">
+                            <span class="action-label">Як працювати:</span> Уникаємо виправдань. Спочатку приймаємо емоцію (коротке вибачення), а потім чітко розписуємо кроки.
+                        </div>
+                    </div>
+                    <div class="grid-column">
+                        <h3>Заплутаний 😳</h3>
+                        <p class="column-description">Дезорієнтований клієнт. Запит формує нечітко, плутається в інтерфейсі й очікує, що підтримка сама розшифрує його проблему.</p>
+                        <p class="column-meta"><span class="meta-label">Поведінка в чаті:</span> Хаотичні повідомлення ("Я кудись натиснув - все зникло, у вас все незручно!").</p>
+                        <div class="column-action-box">
+                            <span class="action-label">Як працювати:</span> Не закидати інформацією. Ставити по одному питанню за раз й вести його за руку, використовуючи покрокові інструкції.
+                        </div>
+                    </div>
+                    <div class="grid-column">
+                        <h3>Прагматик 😐</h3>
+                        <p class="column-description">Цьому клієнту байдуже на емпатію, смайлики та ввічливість. Для нього головне - чимшвидше вирішити проблему без зайвих рухів.</p>
+                        <p class="column-meta"><span class="meta-label">Поведінка в чаті:</span> Пише тезисно, відповідає сухо. Цінує швидкість.</p>
+                        <div class="column-action-box">
+                            <span class="action-label">Як працювати:</span> Максимально стисло, без "води" та шаблонних фраз. Одразу даємо чітку інформацію: терміни, суми, посилання.
+                        </div>
+                    </div>
+                    <div class="grid-column">
+                        <h3>Маніпулятор 😤</h3>
+                        <p class="column-description">Заздалегідь налаштований на те, що його хочуть обдурити, а підтримка нічого не вирішує. Часто використовує тиск для отримання бажаного.</p>
+                        <p class="column-meta"><span class="meta-label">Поведінка в чаті:</span> "Якщо ви зараз не повернете гроші, я напишу про вас у всі соцмережі".</p>
+                        <div class="column-action-box">
+                            <span class="action-label">Як працювати:</span> Перепросити за ситуацію, але залишатися в межах чітких правил компанії. Не піддаватися на шантаж.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="navigation-container">
+                <button id="prevBtn" class="btn btn-no" style="flex: 1;">Назад</button>
+                <button id="nextBtn" class="btn btn-yes" style="flex: 1;">Далі</button>
+            </div>
+        </div>
+
+        <div id="end-screen" class="hidden">
+            <div class="end-card-content">
+                <div class="end-card-icon">🎯</div>
+                <h1 class="end-card-title">Час закріпити знання!</h1>
+                <p class="end-card-subtitle">
+                    Ми успішно переглянули всі поради. А тепер пройдемо невеличке тестування 
+                    <strong>"Як відповісти клієнту"</strong>
+                </p>
+                <button id="restartBtn" class="btn btn-yes">Поїхали! 🚀</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="hidden">
+            <div class="hearts-container">
+                <svg id="heart-1" class="quiz-heart" viewBox="0 0 24 24" fill="#ff4d6d">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <svg id="heart-2" class="quiz-heart" viewBox="0 0 24 24" fill="#ff4d6d">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <svg id="heart-3" class="quiz-heart" viewBox="0 0 24 24" fill="#ff4d6d">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+            
+            <div id="quiz-progress-tag">Питання 1 із 5</div>
+            <h2 id="quiz-question-text">Клієнт у чаті дуже злиться і пише капсом...</h2>
+
+            <div class="quiz-options-container">
+                <button class="quiz-option-btn" data-index="0">Варіант 1</button>
+                <button class="quiz-option-btn" data-index="1">Варіант 2</button>
+                <button class="quiz-option-btn" data-index="2">Варіант 3</button>
+            </div>
+
+            <div id="quiz-feedback" class="quiz-feedback-box hidden"></div>
+
+            <div class="quiz-navigation">
+                <button id="quizNextBtn" class="btn btn-yes" style="width: 100%;">Далі</button>
+            </div>
+        </div>
+
+    </div>
+    
+    <div id="den-screen" class="hidden">
+    <div class="den-card-content">
+        <img src="images/den.jpg" alt="Злісний Кволіті Денис" class="den-img">
+        
+        <div class="den-navigation">
+            <button id="denRestartBtn" class="btn btn-yes">Пройти знову</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
